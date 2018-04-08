@@ -57,13 +57,20 @@ To demonstrate this step, I use camera calibration coefficients, i.e., mtx and d
 ![alt text][image11]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-I have tried different color space and gradients transformation. First, I tried the combination of S-channel, gradient x and direction like learned in class. However, when there is shadow, the lane lines are not detected well. Through the discussions in slack forum, I tried use the combination of the L-channel in HLS color space and B-channel in LAB color space. Since the thresholded L-channel is good at detecting white lanes and B-channel
-is good at yellow lanes, the performance is more resistant to shadow. 
-The steps and codes are illustrated in cells from 9 to 22 in "./advanced-lane-line-detection.ipynb". Here are some examples of my output for this step. 
+I have tried different color space and gradients transformation. First, I tried the combination of S-channel, gradient x and direction like learned in class. However, when there is shadow, the lane lines are not detected well. Through the discussions in slack forum, I tried use the combination of the L-channel in HLS color space and B-channel in LAB color space. Since the thresholded L-channel is good at detecting white lanes:
 
 ![alt text][image2]
+
+And B-channel is good at yellow lanes:
+
 ![alt text][image21]
+
+The combined L-channel and B-channel is more robust. 
+
 ![alt text][image3]
+
+The steps and codes are illustrated in cells from 9 to 22 in "./advanced-lane-line-detection.ipynb". 
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -93,7 +100,10 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
+Warped original images:
 ![alt text][image4]
+
+Warped binary images:
 ![alt text][image41]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
