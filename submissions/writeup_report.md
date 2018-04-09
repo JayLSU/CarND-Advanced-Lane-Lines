@@ -26,7 +26,7 @@ The steps of this project are the following:
 [image41]: ./example_images/warped_binary.png "Warp Example"
 [image5]: ./example_images/detected_lanes.png "Fit Visual"
 [image6]: ./example_images/highlighted_lanes.png "Visual"
-[image7]: ./example_images/cur_pos.png "Curvature and Vehicle Position"
+[image7]: ./example_images/cur_position.png "Curvature and Vehicle Position"
 [image8]: ./example_images/output.png "Output"
 [video1]: ./project_video_output.mp4 "Video"
 
