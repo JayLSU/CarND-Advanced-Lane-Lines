@@ -79,13 +79,13 @@ The code for my perspective transform includes a function called `warp_imgs()`, 
 ```python
 src = np.float32(
     [[585, 450],
-    [190, 720],
+    [190, 683],
     [700, 450],
-    [1120, 720]])
+    [1120, 683]])
 dst = np.float32(
     [[200, 0],
-    [200, 720],
-    [1000, 720],
+    [200, 683],
+    [1000, 683],
     [1000, 0]])
 ```
 
@@ -94,9 +94,9 @@ This resulted in the following source and destination points:
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
 | 585, 450      | 200, 0        | 
-| 190, 720      | 200, 720      |
-| 700, 450      | 1000, 720     |
-| 1120, 720     | 1000, 0       |
+| 190, 683      | 200, 683      |
+| 700, 450      | 1000, 683     |
+| 1120, 683     | 1000, 0       |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
@@ -141,4 +141,4 @@ Here's a [link to my video result](./project_video_output.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Since gradient method to detect lanes does not perform well, I only used color space transformation in pipeline. To effectly detect yellow and white lane lines, I combined L-channel and B-channel of the image. 
+Since gradient method to detect lanes does not perform well, I only used color space transformation in pipeline. To effectly detect yellow and white lane lines, I combined L-channel and B-channel of the image. Actually, since I used L-channel and B-channel to detect all white color parts in ROI, it is very sensitive to white objective in ROI and may result in some problem. For example, when it snows, the snow on the road will severely affect the lane detection. In such case, I think we can use some good histoical lane detection data to help if the lane cannot be detected correctly. Moreover, for some raining and night conditions, we can apply adaptive thersholds to extract lane lines. 
